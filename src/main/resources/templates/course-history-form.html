@@ -1,0 +1,45 @@
+<!-- Inside add-course-to-history-form.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Course History</title>
+</head>
+
+<body>
+    <center>
+        <h1>Add to Course History</h1>
+    </center>
+    <br>
+    <center>
+        <div th:if="${error}" style="color: red;">
+            <p th:text="${error}"></p>
+        </div>
+        <br>
+        <br>
+        <form th:action="@{/student/course/history/add}" method="post">
+
+            <label for="course">Select Course:</label><br>
+            <select id="course" name="courseId">
+                <option th:each="course : ${courses}" th:value="${course.course_id}" th:text="${course.course_code}">
+                </option>
+            </select>
+            <br><br>
+
+            <input type="submit" value="Add Course to History">
+        </form>
+    </center>
+    <br>
+    <br>
+    <center>
+        <form th:action="@{/student/suggest-courses}" method="post">
+            <label for="numCourses">Number of Courses to Suggest:</label>
+            <input type="number" id="numCourses" name="numCourses" min="1" required>
+            <input type="submit" value="Suggest">
+        </form>
+    </center>
+</body>
+
+</html>

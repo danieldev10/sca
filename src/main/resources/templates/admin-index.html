@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Index</title>
+</head>
+
+<body>
+    <center>
+        <h1>Admin Index Page</h1>
+    </center>
+    <br>
+    <center>
+        <h3>This account belongs to: <span th:text="${firstName} + ' ' + ${lastName}"></span></h3>
+    </center>
+    <br>
+    <a th:href="@{/admin/courses/new}">Add Course</a>
+    <br>
+    <a th:href="@{/admin/catalog/new}">Create Catalog</a>
+    <br>
+    <br>
+    <a th:href="@{/admin/users/delete}">Users</a>
+    <br>
+    <br>
+    <ul>
+        <li th:each="course : ${course}">
+            <p th:text="${course.course_code}"></p>
+            <span><a th:href="@{/edit/{id}(id=${course.course_id})}">Edit</a></span>
+        </li>
+    </ul>
+    <center><a th:href="@{/logout}" onclick="return confirm('Are you sure you want to logout?')">Logout</a></center>
+    <br>
+
+</body>
+
+</html>
